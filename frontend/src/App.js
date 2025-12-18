@@ -1,7 +1,6 @@
 // src/App.js
 import React from "react";
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
@@ -73,18 +72,16 @@ export default function App() {
   }
 
   return (
-    <Router>
-      <SidebarProvider>
-        <AppContent />
-        <Toaster
-          position="top-center"
-          toastOptions={{
-            duration: 2500,
-            style: { background: "#f472b6", color: "#fff", borderRadius: "10px" },
-          }}
-        />
-      </SidebarProvider>
-    </Router>
+    <SidebarProvider>
+      <AppContent />
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          duration: 2500,
+          style: { background: "#f472b6", color: "#fff", borderRadius: "10px" },
+        }}
+      />
+    </SidebarProvider>
   );
 }
 

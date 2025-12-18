@@ -1,6 +1,7 @@
 import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { HashRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { CartProvider } from './context/CartContext';
@@ -11,7 +12,9 @@ root.render(
   <React.StrictMode>
     <AuthProvider>
       <CartProvider>
-        <App />
+        <HashRouter>
+          <App />
+        </HashRouter>
       </CartProvider>
     </AuthProvider>
   </React.StrictMode>
