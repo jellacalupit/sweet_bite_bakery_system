@@ -1,24 +1,52 @@
+# Logs
 *.log
+
+# Mac system files
 .DS_Store
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Environment files
 .env
 .env.backup
 .env.production
+
+# PHP specific
 .phpactor.json
 .phpunit.result.cache
-/.fleet
-/.idea
-/.nova
 /.phpunit.cache
-/.vscode
-/.zed
+Homestead.json
+Homestead.yaml
 /auth.json
+/vendor
+
+# Node.js
 /node_modules
 /public/build
 /public/hot
 /public/storage
+
+# Storage keys & temporary
 /storage/*.key
 /storage/pail
-/vendor
-Homestead.json
-Homestead.yaml
-Thumbs.db
+
+# IDE / editor folders
+/.idea
+/.vscode
+/.fleet
+/.zed
+/.nova
+
+# Chrome cache
+AppData/Local/Google/Chrome/User\ Data/**/Cache/
+
+# Other OS / temp files
+*.tmp
+*.swp
+*.swo
+*.bak
+*.old
+*.orig
