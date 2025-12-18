@@ -1,7 +1,7 @@
 {
   "version": 2,
   "installCommand": "cd frontend && npm install",
-  "buildCommand": "cd frontend && npm run build",
+  "buildCommand": "cd frontend && npm install && node ./node_modules/react-scripts/scripts/build.js",
   "outputDirectory": "frontend/build",
   "public": "frontend/build",
   "routes": [
