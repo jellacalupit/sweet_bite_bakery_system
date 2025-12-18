@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.28606c18.css",
+    "main.js": "/static/js/main.c2c9fe9d.js",
+    "static/js/453.09b2a262.chunk.js": "/static/js/453.09b2a262.chunk.js",
+    "static/media/cakes-bg.jpg": "/static/media/cakes-bg.48f4d8818fbb8ee81077.jpg",
+    "static/media/logo.png": "/static/media/logo.ded2ed2c9b120b10792b.png",
+    "index.html": "/index.html",
+    "main.28606c18.css.map": "/static/css/main.28606c18.css.map",
+    "main.c2c9fe9d.js.map": "/static/js/main.c2c9fe9d.js.map",
+    "453.09b2a262.chunk.js.map": "/static/js/453.09b2a262.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.28606c18.css",
+    "static/js/main.c2c9fe9d.js"
+  ]
+}
