@@ -3,7 +3,7 @@
   "installCommand": "cd frontend && npm install",
   "buildCommand": "cd frontend && npm install && node ./node_modules/react-scripts/scripts/build.js",
   "outputDirectory": "frontend/build",
-  "public": "frontend/build",
+  "public": true,
   "routes": [
     { "src": "/static/(.*)", "dest": "/static/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
