@@ -18,7 +18,6 @@ export default function ProductManagement() {
   });
 
   const [categories, setCategories] = useState([]);
-  const CATEGORY_ORDER = ["cake", "bread", "pastry", "cupcake", "cookies"];
   const [preview, setPreview] = useState(null);
   const [loading, setLoading] = useState(false);
   const formatMoney = (value) => {
@@ -50,6 +49,7 @@ export default function ProductManagement() {
   }, []);
 
   const orderedCategories = React.useMemo(() => {
+    const CATEGORY_ORDER = ["cake", "bread", "pastry", "cupcake", "cookies"];
     const byName = new Map(
       (Array.isArray(categories) ? categories : []).map((c) => [
         String(c?.name || "").trim().toLowerCase(),
@@ -58,7 +58,7 @@ export default function ProductManagement() {
     );
 
     return CATEGORY_ORDER.map((n) => byName.get(n)).filter(Boolean);
-  }, [categories, CATEGORY_ORDER]);
+  }, [categories]);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
