@@ -13,6 +13,7 @@ Desktop.ini
 .env
 .env.backup
 .env.production
+frontend/build/
 
 # PHP specific
 .phpactor.json

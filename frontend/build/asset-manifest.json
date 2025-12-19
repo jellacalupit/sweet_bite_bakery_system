@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.d4a28c3e.css",
+    "main.css": "/static/css/main.03a2c96a.css",
     "main.js": "/static/js/main.736b3f91.js",
     "static/js/453.09b2a262.chunk.js": "/static/js/453.09b2a262.chunk.js",
     "static/media/cakes-bg.jpg": "/static/media/cakes-bg.48f4d8818fbb8ee81077.jpg",
     "static/media/logo.png": "/static/media/logo.ded2ed2c9b120b10792b.png",
     "index.html": "/index.html",
-    "main.d4a28c3e.css.map": "/static/css/main.d4a28c3e.css.map",
+    "main.03a2c96a.css.map": "/static/css/main.03a2c96a.css.map",
     "main.736b3f91.js.map": "/static/js/main.736b3f91.js.map",
     "453.09b2a262.chunk.js.map": "/static/js/453.09b2a262.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d4a28c3e.css",
+    "static/css/main.03a2c96a.css",
     "static/js/main.736b3f91.js"
   ]
 }
