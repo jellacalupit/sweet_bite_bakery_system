@@ -1,0 +1,46 @@
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Vercel
+.vercel
+vercel.json.tmp
+
+# Frontend - Node modules and build artifacts
+frontend/node_modules/
+frontend/node_modules/.cache/
+frontend/.cache/
+frontend/build/
+frontend/dist/
+
+# Frontend - IDE
+frontend/.vscode/
+frontend/.idea/
+
+# Backend - Vendor and composer
+backend/vendor/
+backend/composer.lock
+
+# Backend - Generated documentation
+backend/.scribe/
+backend/public/api-docs/
+backend/public/vendor/
+backend/resources/views/scribe/
+backend/resources/views/vendor/
+backend/storage/api-docs/
+backend/storage/logs/
+
+# Backend - IDE
+backend/.vscode/
+backend/.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
+*.pem
+
+# Misc
+*.tmp
+.env.example.local
