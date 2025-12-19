@@ -58,7 +58,7 @@ export default function ProductManagement() {
     );
 
     return CATEGORY_ORDER.map((n) => byName.get(n)).filter(Boolean);
-  }, [categories]);
+  }, [categories, CATEGORY_ORDER]);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
