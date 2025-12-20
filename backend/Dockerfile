@@ -1,4 +1,8 @@
-# Use PHP 8.2 CLI image (lightweight for Laravel)
+# ============================
+# Dockerfile for Laravel Backend
+# ============================
+
+# Use PHP 8.2 CLI image
 FROM php:8.2-cli
 
 # Install system dependencies
@@ -21,13 +25,10 @@ WORKDIR /var/www/html
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Copy composer config files first for layer caching
-COPY composer.json composer.lock ./
-
-# Copy the rest of the project files
+# Copy all project files **before running composer**
 COPY . .
 
-# Now run composer install AFTER project files exist
+# Install PHP dependencies
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 
 # Create required Laravel directories with proper permissions
@@ -41,8 +42,8 @@ RUN mkdir -p storage/framework/{cache,data,sessions,views} \
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-# Expose port
+# Expose port (Render will override $PORT)
 EXPOSE 8080
 
-# Use entrypoint
+# Use entrypoint to initialize Laravel
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
