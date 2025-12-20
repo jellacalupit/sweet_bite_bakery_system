@@ -20,11 +20,11 @@ class DatabaseSeeder extends Seeder
 
         // Create Admin User
         User::firstOrCreate(
-            ['email' => 'admin@sweetbite.com'],
+            ['email' => 'admin@gmail.com'],
             [
                 'name' => 'Admin User',
-                'email' => 'admin@sweetbite.com',
-                'password' => Hash::make('admin123'),
+                'email' => 'admin@gmail.com',
+                'password' => Hash::make('admin12345'),
                 'role' => 'admin',
                 'phone' => '1234567890',
                 'address' => 'Admin Address',
@@ -34,11 +34,11 @@ class DatabaseSeeder extends Seeder
 
         // Create Customer User
         User::firstOrCreate(
-            ['email' => 'customer@sweetbite.com'],
+            ['email' => 'test@gmail.com'],
             [
                 'name' => 'Test Customer',
-                'email' => 'customer@sweetbite.com',
-                'password' => Hash::make('customer123'),
+                'email' => 'test@gmail.com',
+                'password' => Hash::make('test12345'),
                 'role' => 'user', // Will be normalized to 'customer' on frontend
                 'phone' => '0987654321',
                 'address' => '123 Customer Street',
