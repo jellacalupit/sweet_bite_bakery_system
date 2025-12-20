@@ -63,8 +63,8 @@ class ProductController extends Controller
                 $filename = time() . '_' . $file->getClientOriginalName();
                 $path = $file->storeAs('products', $filename, 'public');
                 
-                // Store only the relative path, not the full URL
-                $imageUrl = 'storage/products/' . $filename;
+                // Store the full URL so frontend can render images regardless of origin
+                $imageUrl = url('storage/products/' . $filename);
                 
                 \Log::info('Image stored successfully', [
                     'filename' => $filename,
@@ -124,10 +124,15 @@ class ProductController extends Controller
 
         // Handle image upload if present
         if ($request->hasFile('image')) {
-            // Delete old image if exists
-            if ($product->image_url && strpos($product->image_url, 'storage/') === 0) {
-                $oldPath = str_replace('storage/', '', $product->image_url);
-                \Illuminate\Support\Facades\Storage::disk('public')->delete($oldPath);
+            // Delete old image if exists (supports full URL or relative storage path)
+            if ($product->image_url) {
+                $old = $product->image_url;
+                $parsed = parse_url($old, PHP_URL_PATH) ?: $old;
+                $parsed = ltrim($parsed, '/');
+                if (strpos($parsed, 'storage/') === 0) {
+                    $oldRelative = substr($parsed, strlen('storage/'));
+                    \Illuminate\Support\Facades\Storage::disk('public')->delete($oldRelative);
+                }
             }
 
             // Store new image
@@ -135,8 +140,8 @@ class ProductController extends Controller
             $filename = time() . '_' . $file->getClientOriginalName();
             $path = $file->storeAs('products', $filename, 'public');
             
-            // Store only the relative path
-            $imageUrl = 'storage/products/' . $filename;
+            // Store full URL
+            $imageUrl = url('storage/products/' . $filename);
 
             \Log::info('Product image updated', [
                 'product_id' => $product->id,
@@ -168,8 +173,12 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         if ($product->image_url) {
-            $oldPath = str_replace(url('storage') . '/', '', $product->image_url);
-            Storage::disk('public')->delete($oldPath);
+            $parsed = parse_url($product->image_url, PHP_URL_PATH) ?: $product->image_url;
+            $parsed = ltrim($parsed, '/');
+            if (strpos($parsed, 'storage/') === 0) {
+                $oldRelative = substr($parsed, strlen('storage/'));
+                Storage::disk('public')->delete($oldRelative);
+            }
         }
 
         $product->delete();
