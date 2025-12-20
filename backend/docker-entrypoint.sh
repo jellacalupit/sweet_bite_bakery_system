@@ -32,10 +32,8 @@ php artisan cache:clear || true
 php artisan route:clear || true
 php artisan view:clear || true
 
-# Cache config/routes/views for production (optional)
-php artisan config:cache || echo "Warning: Failed to cache config"
-php artisan route:cache || echo "Warning: Failed to cache routes"
-php artisan view:cache || echo "Warning: Failed to cache views"
+# Do NOT cache config at runtime — let Laravel load from ENV vars
+# This prevents stale config cache from blocking environment variables
 
 # Optional: run database migrations if using a real database
 # php artisan migrate --force || echo "Warning: Database migration failed"
