@@ -1,9 +1,11 @@
 import axios from "axios";
 
+// REACT_APP_API_URL should be the backend origin (e.g. https://sweet-bite-bakery-system.onrender.com)
+const backendOrigin = (process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000').replace(/\/+$/, '');
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || "http://127.0.0.1:8000/api",
+  baseURL: `${backendOrigin}/api`,
   headers: {
-    Accept: "application/json",
+    Accept: 'application/json',
   },
 });
 
