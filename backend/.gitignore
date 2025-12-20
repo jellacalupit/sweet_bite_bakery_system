@@ -34,6 +34,11 @@ Homestead.yaml
 /storage/*.key
 /storage/pail
 
+# Laravel cache
+/bootstrap/cache/config.php
+/bootstrap/cache/packages.php
+/bootstrap/cache/services.php
+
 # IDE / editor folders
 /.idea
 /.vscode
