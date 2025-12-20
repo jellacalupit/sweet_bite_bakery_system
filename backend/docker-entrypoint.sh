@@ -42,6 +42,9 @@ php artisan migrate --force || echo "Warning: Database migration failed"
 # Run seeders to populate initial data
 echo "Seeding database..."
 php artisan db:seed --force || echo "Warning: Database seeding failed"
+# Ensure the public storage symlink exists so uploaded files are web-accessible
+echo "Creating storage symlink..."
+php artisan storage:link || echo "Storage link already exists or failed"
 
 echo "Environment: ${APP_ENV:-production}"
 echo "Debug mode: ${APP_DEBUG:-false}"
