@@ -122,6 +122,20 @@ class ProductController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
         ]);
 
+        // Handle image deletion if requested
+        if ($request->input('delete_image')) {
+            if ($product->image_url) {
+                $old = $product->image_url;
+                $parsed = parse_url($old, PHP_URL_PATH) ?: $old;
+                $parsed = ltrim($parsed, '/');
+                if (strpos($parsed, 'storage/') === 0) {
+                    $oldRelative = substr($parsed, strlen('storage/'));
+                    \Illuminate\Support\Facades\Storage::disk('public')->delete($oldRelative);
+                }
+            }
+            $imageUrl = null;
+        }
+
         // Handle image upload if present
         if ($request->hasFile('image')) {
             // Delete old image if exists (supports full URL or relative storage path)

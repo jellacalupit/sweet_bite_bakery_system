@@ -604,12 +604,8 @@ export default function AdminDashboard() {
                       <button
                         type="button"
                         onClick={() => {
-                          setEditForm({ ...editForm, image: null });
-                          setEditPreview(
-                            editingProduct?.image_url
-                              ? getImageUrl(editingProduct.image_url)
-                              : null
-                          );
+                          setEditForm({ ...editForm, image: null, deleteImage: true });
+                          setEditPreview(null);
                         }}
                         className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full hover:bg-red-600"
                       >
