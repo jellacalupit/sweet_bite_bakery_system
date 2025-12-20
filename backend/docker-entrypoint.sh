@@ -21,18 +21,23 @@ else
     echo "APP_KEY is set."
 fi
 
-# Clear existing caches
+# Ensure Laravel uses file-based drivers for Render free tier
+export CACHE_DRIVER=file
+export SESSION_DRIVER=file
+export QUEUE_CONNECTION=sync
+
+# Clear existing caches safely
 php artisan config:clear || true
 php artisan cache:clear || true
 php artisan route:clear || true
 php artisan view:clear || true
 
-# Cache config/routes/views for production
+# Cache config/routes/views for production (optional)
 php artisan config:cache || echo "Warning: Failed to cache config"
 php artisan route:cache || echo "Warning: Failed to cache routes"
 php artisan view:cache || echo "Warning: Failed to cache views"
 
-# Optional: run database migrations
+# Optional: run database migrations if using a real database
 # php artisan migrate --force || echo "Warning: Database migration failed"
 
 echo "Environment: ${APP_ENV:-production}"
