@@ -1,11 +1,14 @@
 export const getImageUrl = (imagePath) => {
   if (!imagePath) return '/placeholder.png';
-  
-  // If it already has the full URL, return as-is
-  if (imagePath.startsWith('http')) {
-    return imagePath;
-  }
-  
-  // Otherwise, prepend the base URL
-  return `http://127.0.0.1:8000/${imagePath}`;
+
+  // If it's already a full URL, return it unchanged
+  if (imagePath.startsWith('http')) return imagePath;
+
+  // Determine backend base URL from env (CRA) or fallback to current origin
+  const apiBase = (process.env.REACT_APP_API_URL && process.env.REACT_APP_API_URL.replace(/\/+$/, '')) || window.location.origin;
+
+  // Ensure no leading slash duplication
+  const cleaned = imagePath.replace(/^\/+/, '');
+
+  return `${apiBase}/${cleaned}`;
 };
