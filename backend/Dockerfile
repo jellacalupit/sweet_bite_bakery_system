@@ -18,15 +18,17 @@ RUN apt-get update && apt-get install -y \
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy composer files first for caching
-COPY composer.json composer.lock ./
-
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
-RUN composer install --no-interaction --optimize-autoloader --no-dev
 
-# Copy all project files
+# Copy composer config files first for layer caching
+COPY composer.json composer.lock ./
+
+# Copy the rest of the project files
 COPY . .
+
+# Now run composer install AFTER project files exist
+RUN composer install --no-interaction --optimize-autoloader --no-dev
 
 # Create required Laravel directories with proper permissions
 RUN mkdir -p storage/framework/{cache,data,sessions,views} \
@@ -39,8 +41,8 @@ RUN mkdir -p storage/framework/{cache,data,sessions,views} \
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-# Expose Render port (Render will override with $PORT)
+# Expose port
 EXPOSE 8080
 
-# Use entrypoint to handle migrations, caching, and start server
+# Use entrypoint
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]

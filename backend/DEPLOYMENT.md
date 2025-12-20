@@ -75,7 +75,7 @@ Copy the output (starts with `base64:`) and set it as `APP_KEY` in Render's envi
 3. **Configure the service:**
    - **Name**: Your app name
    - **Environment**: Docker
-   - **Dockerfile Path**: `Dockerfile` (or leave blank if in root)
+   - **Dockerfile Path**: `backend/Dockerfile`
    - **Docker Context**: `.` (root directory)
 
 ### Step 3: Set Environment Variables
