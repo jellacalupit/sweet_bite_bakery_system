@@ -35,8 +35,13 @@ php artisan view:clear || true
 # Do NOT cache config at runtime — let Laravel load from ENV vars
 # This prevents stale config cache from blocking environment variables
 
-# Optional: run database migrations if using a real database
-# php artisan migrate --force || echo "Warning: Database migration failed"
+# Run database migrations on startup
+echo "Running database migrations..."
+php artisan migrate --force || echo "Warning: Database migration failed"
+
+# Run seeders to populate initial data
+echo "Seeding database..."
+php artisan db:seed --force || echo "Warning: Database seeding failed"
 
 echo "Environment: ${APP_ENV:-production}"
 echo "Debug mode: ${APP_DEBUG:-false}"
